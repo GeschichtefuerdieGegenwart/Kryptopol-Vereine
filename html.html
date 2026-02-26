@@ -1,0 +1,480 @@
+html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Mystery: Kryptopolitische Turnvereine</title>
+  <!-- Google Font für moderne Typografie -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <!-- Font Awesome für Icons (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* CSS-Variablen für konsistentes Design */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #eef2f5 0%, #f8fafc 100%);
+      color: #1e293b;
+      line-height: 1.5;
+      padding: 0 0 3rem 0;
+      min-height: 100vh;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,20,40,0.05);
+      padding: 0.8rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #0f3b5e;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e4a6d;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #2c7da0;
+      color: #0b3b4e;
+    }
+
+    /* Hauptcontainer */
+    .main-header {
+      max-width: 1400px;
+      margin: 2rem auto 1.5rem auto;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0b3b4e, #1e5f7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      background: rgba(255,255,255,0.6);
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      margin: 1.5rem 0 0.5rem 0;
+      border-left: 6px solid #2c7da0;
+    }
+
+    .leitfrage {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 20px 35px -8px rgba(0,40,60,0.15), 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .leitfrage p {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    /* Arbeitsauftrag als Kachel */
+    .arbeit {
+      background: #e4f0f7;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      border-left: 8px solid #1e5f7a;
+    }
+
+    .arbeit ol {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .arbeit li {
+      margin: 0.5rem 0;
+    }
+
+    /* Grid für die Arbeitsboxen */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .card-box {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 1.6rem 1.4rem 1.8rem 1.4rem;
+      box-shadow: 0 20px 40px -12px rgba(0,30,50,0.2);
+      border: 1px solid rgba(255,255,255,0.6);
+      transition: transform 0.15s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-box:hover {
+      transform: translateY(-4px);
+    }
+
+    .box-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #12455f;
+    }
+
+    .box-title i {
+      font-size: 1.5rem;
+      color: #2c7da0;
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: #4a5f6e;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #8db5c5;
+      padding-left: 0.8rem;
+      background: rgba(255,255,255,0.5);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Kartenbereiche (Drag & Drop) */
+    .cards-area {
+      min-height: 160px;
+      background: rgba(245, 248, 250, 0.8);
+      border-radius: 20px;
+      padding: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-start;
+      border: 2px dashed rgba(44, 125, 160, 0.2);
+      transition: background 0.2s, border-color 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .cards-area:hover {
+      border-color: #2c7da0;
+      background: rgba(235, 245, 250, 0.9);
+    }
+
+    /* einzelne Kärtchen */
+    .card {
+      background: white;
+      border-radius: 40px 16px 16px 40px; /* asymmetrisch für modernen Look */
+      padding: 0.8rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 6px 14px rgba(0,20,30,0.1), 0 1px 2px rgba(0,0,0,0.05);
+      cursor: grab;
+      user-select: none;
+      max-width: 260px;
+      border-left: 6px solid #3a8bb9;
+      transition: box-shadow 0.2s, transform 0.1s;
+      line-height: 1.4;
+      color: #0b2b38;
+    }
+
+    .card:active {
+      cursor: grabbing;
+      box-shadow: 0 12px 20px rgba(0,40,60,0.2);
+      transform: scale(1.01);
+    }
+
+    .card.relevant {
+      background: #e1f7e6;
+      border-left-color: #2b7a4b;
+    }
+
+    .card.irrelevant {
+      background: #ffe6e5;
+      border-left-color: #b13e3e;
+      opacity: 0.8;
+    }
+
+    /* Markierung für Drop-Zonen */
+    #relevant.cards-area {
+      border-color: #2b7a4b;
+      background: rgba(43, 122, 75, 0.05);
+    }
+
+    #irrelevant.cards-area {
+      border-color: #b13e3e;
+      background: rgba(177, 62, 62, 0.05);
+    }
+
+    /* Textbereiche */
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      resize: vertical;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(4px);
+      transition: border 0.2s, box-shadow 0.2s;
+      margin-top: 0.6rem;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #2c7da0;
+      box-shadow: 0 0 0 4px rgba(44,125,160,0.15);
+    }
+
+    .small {
+      font-size: 0.85rem;
+      color: #3a5668;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Transfer-Box nimmt volle Breite im Grid */
+    .transfer-box {
+      grid-column: 1 / -1;
+    }
+
+    /* Footer */
+    .footer-note {
+      text-align: center;
+      margin-top: 3rem;
+      color: #5d737e;
+      font-size: 0.85rem;
+    }
+
+    /* iPad / Touch-freundliche Anpassungen */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 0.8rem 1rem;
+      }
+      .nav-links {
+        gap: 0.8rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .leitfrage p {
+        font-size: 1.2rem;
+      }
+      .card {
+        max-width: 100%;
+        width: auto;
+        padding: 0.9rem 1.4rem; /* größere Touch-Ziele */
+        font-size: 1rem;
+      }
+      .cards-area {
+        min-height: 180px;
+      }
+    }
+
+    /* noch größere Karten für ganz kleine Screens */
+    @media (max-width: 480px) {
+      .card {
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    /* Smooth scrolling für Ankerlinks */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation mit Ankerlinks -->
+  <nav class="nav-bar">
+    <span class="nav-brand"><i class="fas fa-dumbbell" style="margin-right: 8px;"></i>Turnverein 1820</span>
+    <div class="nav-links">
+      <a href="#aufgabe"><i class="fas fa-tasks"></i> Aufgabe</a>
+      <a href="#karten"><i class="fas fa-layer-group"></i> Karten</a>
+      <a href="#sortier"><i class="fas fa-filter"></i> Sortieren</a>
+      <a href="#wirkung"><i class="fas fa-project-diagram"></i> Wirkung</a>
+      <a href="#antwort"><i class="fas fa-pen"></i> Antwort</a>
+    </div>
+  </nav>
+
+  <div class="main-header">
+    <h1>Mystery: Warum singt ein Turnverein politische Lieder?</h1>
+    <div class="leitfrage" id="aufgabe">
+      <p><strong>„Im Jahr 1820 gründet der Schlosser Heinrich einen Turnverein in seiner Stadt. 1822 wird er von der Polizei verhaftet. Warum?“</strong></p>
+    </div>
+
+    <div class="arbeit">
+      <h2><i class="fas fa-clipboard-list" style="margin-right: 10px;"></i>Arbeitsauftrag</h2>
+      <ol>
+        <li>Lest alle Kärtchen und sortiert sie: Welche sind für die Leitfrage relevant, welche nicht?</li>
+        <li>Ordnet die relevanten Kärtchen zu einem Wirkungsgefüge an (Reihenfolge, Gruppen, Pfeile könnt ihr auf Papier zeichnen).</li>
+        <li>Formuliert eine Antwort auf die Leitfrage in 3–5 Sätzen.</li>
+        <li>Transfer: Warum organisierten sich Nationalisten in Turnvereinen statt in Parteien? Gibt es heute Organisationen, die offiziell ein anderes Ziel verfolgen?</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Hauptarbeitsbereich: Grid mit allen Boxen -->
+  <div class="dashboard">
+    <!-- Box 1: Alle Kärtchen -->
+    <div class="card-box" id="karten">
+      <div class="box-title"><i class="fas fa-archive"></i> 1. Alle Informationskärtchen</div>
+      <div class="hint"><i class="fas fa-arrows-alt"></i> Zieht die Kärtchen per Drag & Drop in die Sortierbereiche.</div>
+      <div id="pool" class="cards-area">
+        <div class="card" draggable="true">Friedrich Ludwig Jahn gründete 1811 den ersten Turnplatz in Berlin. Er verband Turnen mit nationaler Erziehung.</div>
+        <div class="card" draggable="true">Die Karlsbader Beschlüsse von 1819 verboten alle Vereinigungen, die Nationalismus und Liberalismus förderten.</div>
+        <div class="card" draggable="true">Kryptopolitische Vereinigungen waren Organisationen, die offiziell ein unpolitisches Ziel verfolgten, aber im Geheimen politisch agierten.</div>
+        <div class="card" draggable="true">Nach den napoleonischen Kriegen war das Heilige Römische Reich aufgelöst. Es gab keinen deutschen Nationalstaat.</div>
+        <div class="card" draggable="true">Liberalismus fordert politische Mitsprache des Bürgertums gegenüber der Fürstenherrschaft.</div>
+        <div class="card" draggable="true">Auf dem Wartburgfest 1817 demonstrierten Turner und Burschenschaftler offen gegen die bestehende Ordnung.</div>
+        <div class="card" draggable="true">Die Fürsten sahen den Nationalismus als Bedrohung ihrer Macht.</div>
+        <div class="card" draggable="true">Zeitungen wurden nach 1819 zensiert, um die Verbreitung liberaler und nationalistischer Ideen zu verhindern.</div>
+        <div class="card" draggable="true">Turner und Burschenschaftler stammten aus dem jugendlichen bildungsbürgerlichen Milieu.</div>
+        <div class="card" draggable="true">Der Nationalismus stellte mit seiner Idee der Gleichwertigkeit der Bürger das bestehende politische System ohne Mitspracherecht in Frage.</div>
+        <div class="card" draggable="true">Sängerschaften und Turnvereine hatten – zumindest offiziell – ein anderes Ziel als die Nationalstaatsgründung.</div>
+        <div class="card" draggable="true">Heinrich singt bei den Turnübungen Lieder über das „deutsche Vaterland“.</div>
+        <div class="card" draggable="true">Die Dampfmaschine wurde im 18. Jahrhundert erfunden und veränderte die Arbeitswelt. (Ablenkung)</div>
+        <div class="card" draggable="true">Napoleon wurde 1821 auf St. Helena verbannt. (Ablenkung)</div>
+      </div>
+    </div>
+
+    <!-- Box 2: Sortierbereich relevant / irrelevant -->
+    <div class="card-box" id="sortier">
+      <div class="box-title"><i class="fas fa-sort-amount-down-alt"></i> 2. Sortiert die Kärtchen</div>
+      <div class="hint"><i class="fas fa-check-circle"></i> relevant (grün) / <i class="fas fa-times-circle"></i> irrelevant (rot)</div>
+      
+      <h4 style="margin: 0.8rem 0 0.2rem 0; color: #2b7a4b;"><i class="fas fa-arrow-right"></i> Relevant für die Leitfrage</h4>
+      <div id="relevant" class="cards-area"></div>
+
+      <h4 style="margin: 1.2rem 0 0.2rem 0; color: #b13e3e;"><i class="fas fa-ban"></i> Nicht relevant / Ablenkung</h4>
+      <div id="irrelevant" class="cards-area"></div>
+    </div>
+
+    <!-- Box 3: Wirkungsgefüge Notizen -->
+    <div class="card-box" id="wirkung">
+      <div class="box-title"><i class="fas fa-puzzle-piece"></i> 3. Wirkungsgefüge (Notizen)</div>
+      <div class="small"><i class="fas fa-lightbulb"></i> Beschreibt hier Faktoren und Zusammenhänge (z.B. Pfeile, Ketten).</div>
+      <textarea placeholder="z.B.: Karlsbader Beschlüsse → Verbot politischer Vereine → Nationalisten weichen auf Turnvereine aus → Polizei kontrolliert Turnvereine schärfer …"></textarea>
+    </div>
+
+    <!-- Box 4: Antwort + Transfer (dank transfer-box volle Breite) -->
+    <div class="card-box transfer-box" id="antwort">
+      <div class="box-title"><i class="fas fa-comment-dots"></i> 4. Antwort auf die Leitfrage</div>
+      <textarea placeholder="Formuliert hier eure Antwort in 3–5 Sätzen: Warum wird Heinrich 1822 verhaftet?"></textarea>
+
+      <div style="margin-top: 2rem;">
+        <div class="box-title"><i class="fas fa-cloud-upload-alt"></i> 5. Transferfrage</div>
+        <textarea placeholder="Warum organisierten sich Nationalisten in Turnvereinen statt in Parteien? Gibt es heute Organisationen, die offiziell ein anderes Ziel verfolgen, aber inoffiziell politisch wirken?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-mouse-pointer"></i> Kärtchen können per Drag &amp; Drop verschoben werden – auch auf dem iPad (langes Drücken). Viel Erfolg!
+  </div>
+
+  <!-- Gleiches Drag & Drop Skript (unverändert, aber stabil) -->
+  <script>
+    (function() {
+      const cards = document.querySelectorAll('.card');
+      const areas = document.querySelectorAll('.cards-area');
+
+      cards.forEach(card => {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', e.target.innerText);
+          // Index speichern, um später das Element zu identifizieren
+          const index = Array.from(cards).indexOf(e.target);
+          e.dataTransfer.setData('card-id', index);
+          e.dataTransfer.effectAllowed = 'move';
+          card.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+        });
+      });
+
+      areas.forEach(area => {
+        area.addEventListener('dragover', e => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+        });
+
+        area.addEventListener('drop', e => {
+          e.preventDefault();
+          const text = e.dataTransfer.getData('text/plain');
+          const cardIndex = e.dataTransfer.getData('card-id');
+          // Falls cardIndex nicht vorhanden (z.B. älterer Browser) – dann suchen wir per Text? Nein, besser per Index.
+          const card = cards[cardIndex];
+          if (card && area !== card.parentElement) {
+            area.appendChild(card);
+            // Farbklassen entfernen und je nach Ziel setzen
+            card.classList.remove('relevant', 'irrelevant');
+            if (area.id === 'relevant') card.classList.add('relevant');
+            if (area.id === 'irrelevant') card.classList.add('irrelevant');
+          }
+        });
+      });
+
+      // kleine Hilfsfunktion: Da manche Browser den Index nicht sauber übergeben,
+      // Fallback: Bei fehlendem Index versuchen, das Element über den Text zu finden (nicht perfekt, aber hilft).
+      // Wir ergänzen einen globalen Fallback (optional).
+      document.addEventListener('dragstart', (e) => {
+        if (!e.target.classList.contains('card')) return;
+        // sicherstellen, dass wir eine ID mitschicken
+        const idx = Array.from(cards).indexOf(e.target);
+        e.dataTransfer.setData('card-id', idx);
+      });
+    })();
+  </script>
+
+  <!-- Hinweis: Bei Problemen mit Touch-Drag kann auf iPad der "Drag"-Modus durch langes Drücken aktiviert werden. 
+       Das ist systemseitig gegeben. Wir haben die Karten groß genug gemacht. -->
+</body>
+</html>
